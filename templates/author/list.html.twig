@@ -15,7 +15,7 @@
                 <td>{{author.id}}</td>
            <td>  <img width="100px" src="{{ asset(author.picture) }}" > </td>
                <td> {{author.email}}</td>
-               <td> {{author.username}}</td>
+               <td> {{author.username | upper }}</td>
                <td> {{author.nb_books}}</td>
             </tr>
         {% endfor %}
