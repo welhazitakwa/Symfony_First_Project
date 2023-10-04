@@ -46,7 +46,7 @@ array('id' => 3, 'picture' => '/images/Taha_Hussein.jpg','username' => 'Taha Hus
     #[Route('/Author/show/details{id}', name : "showDetails")]
      public function auhtorDetails ($id):Response{
        
-        return $this->render('Author/list.html.twig', [
+        return $this->render('Author/show.html.twig', [
             'id' => $id,
         ]);
         
