@@ -1,1 +1,31 @@
-<h1> La variable passé : {{name}} </h1>
+<h1>
+ {% for author in authors  %}
+ {% if ( author.id == id ) %} 
+       {# <p>l'id de l'auteur passé : {{author.id}}</p> #}
+           {# <p> l'image : <img width="100px" src="{{ asset(author.picture) }}" > </p> #}
+               {# <p> l'email {{author.email}}</p> #}
+               {# <p> le nom de l'auteur : {{author.username }}</p>
+               <p> nombre de livres : {{author.nb_books}}</p> #}
+             
+
+
+ <div style="border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); width: 550px; padding: 30px;">
+        <img src="{{ asset(author.picture) }}" alt="Image de la carte" style="max-width: 100%; height: 50%;">
+        <p style="margin: 10px 0;">l'id de l'auteur passé : {{author.id}}</p>
+        <p style="margin: 10px 0;"> l'email {{author.email}}</p>
+        <p style="margin: 10px 0;">le nom de l'auteur : {{author.username }}</p>
+        <p style="margin: 10px 0;">nombre de livres : {{author.nb_books}}</p>
+    </div>
+
+
+
+
+
+
+
+{% endif %}
+ {% endfor %}
+
+
+
+ </h1>

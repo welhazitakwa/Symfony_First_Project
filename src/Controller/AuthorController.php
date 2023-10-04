@@ -34,20 +34,21 @@ array('id' => 3, 'picture' => '/images/Taha_Hussein.jpg','username' => 'Taha Hus
     }
 
     
-    #[Route('/Author/show/{name}', name : "show")]
-     public function showAuthor ($name):Response{
+    // #[Route('/Author/show/{name}', name : "show")]
+    //  public function showAuthor ($name):Response{
        
-        return $this->render('Author/show.html.twig', [
-            'name' => $name,
-        ]);
+    //     return $this->render('Author/show.html.twig', [
+    //         'name' => $name,
+    //     ]);
         
-    }
+    // }
 
-    #[Route('/Author/show/details{id}', name : "showDetails")]
+    #[Route('/Author/show/details/{id}', name : "showDetails")]
      public function auhtorDetails ($id):Response{
        
         return $this->render('Author/show.html.twig', [
             'id' => $id,
+            'authors' =>$this->authors,
         ]);
         
     }

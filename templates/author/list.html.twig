@@ -18,7 +18,7 @@
                <td> {{author.email}}</td>
                <td> {{author.username | upper }}</td>
                <td> {{author.nb_books}}</td>
-               <td> &emsp; <a href=""> Lien vers les details de : {{author.username}} </a> &emsp;</td>
+               <td> &emsp; <a href="show/details/{{author.id}}"> Lien vers les details de :   {{author.username}} </a>   &emsp;</td>
 
             </tr>
         {% endfor %}
