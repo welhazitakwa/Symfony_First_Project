@@ -7,6 +7,7 @@
             <th>email</th>
             <th>username</th>
             <th>nombre books</th>
+            <th> Link </th>
         </tr>
     </thead>
     <tbody>
@@ -17,6 +18,8 @@
                <td> {{author.email}}</td>
                <td> {{author.username | upper }}</td>
                <td> {{author.nb_books}}</td>
+               <td> &emsp; <a href=""> Lien vers les details de : {{author.username}} </a> &emsp;</td>
+
             </tr>
         {% endfor %}
     </tbody>
