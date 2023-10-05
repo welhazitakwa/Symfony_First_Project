@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\AuthorRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -52,4 +53,13 @@ array('id' => 3, 'picture' => '/images/Taha_Hussein.jpg','username' => 'Taha Hus
         ]);
         
     }
+    #[Route('/Author/read',name:"read")]
+    public function read (AuthorRepository $authorRepo):Response {
+         $author = $authorRepo->findAll();
+         return $this->render ('Author/read.html.twig', [
+            "author" => $author ,
+         ] ) ;  
+    }
+
+
 }

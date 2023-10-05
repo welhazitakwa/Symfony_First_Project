@@ -19,13 +19,18 @@
                <td> {{author.email}}</td>
                <td> {{author.username | upper }}</td>
                <td> {{author.nb_books}}</td>
-               <td> &emsp; <a href="show/details/{{author.id}}"> Lien vers les details de :   {{author.username}} </a>   &emsp;</td>
-
-            </tr>
+               {# <td> &emsp; <a href="show/details/{{author.id}}"> Lien vers les details de :   {{author.username}} </a>   &emsp;</td> #}
+               {# showDetails heya nafsha lmwjouda fel name ta3 methode li mwjouda fel controller chta3ml redirection il va les combiner a travers le name#}
+               <td> &emsp; <a href= "{{path('showDetails', {id: author.id} )}}"> Lien vers les details de :   {{author.username}} </a>   &emsp;</td>
+                
+                
+            </tr> 
+            {# {% set totalBooks = totalBooks + author.nb_books %} #}
         {% endfor %}
     </tbody>
 </table>
 <p> le nombre des auteurs est : {{ authors | length  }} </p>
+{# <p> le nombre total des livres de tout les auters est :  {{ nb }} </p> #}
 {% else %} 
 <h1> Le tableau est vide  </h1>
 {% endif %}
