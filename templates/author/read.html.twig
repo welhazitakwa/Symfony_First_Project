@@ -1,6 +1,23 @@
-
+{# 
 {% for auth in author %}
 {{auth.id}}
 {{auth.username}}
 {{auth.email }}
- {% endfor %}
+ {% endfor %} #}
+ <h1>List authors</h1>
+<table border="1">
+<tr>
+    <th> id </th>
+    <th>Username</th>
+    <th>Email</th>
+</tr>
+
+      <tr>  {% for a in author %} </tr>
+      <td> {{ a.id }}</td>
+      <td>{{ a.username }}</td>
+      <td> {{ a.email }}</td>
+        
+      
+    {% endfor %}
+     <a href= "{{path('addStatic' )}}"> Add_Link </a> 
+</table>

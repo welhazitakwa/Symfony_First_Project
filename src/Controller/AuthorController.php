@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Author;
 use App\Repository\AuthorRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -59,6 +61,16 @@ array('id' => 3, 'picture' => '/images/Taha_Hussein.jpg','username' => 'Taha Hus
          return $this->render ('Author/read.html.twig', [
             "author" => $author ,
          ] ) ;  
+    }
+    #[Route('/Author/AddStatic', name:"addStatic")]
+    public function addStatic(ManagerRegistry $doctrine): Response{
+          $em = $doctrine->getManager();
+          $author = new Author();
+          $author->setEmail("testAddStatic@gmail.com");
+          $author->setUsername("Add Static");
+          $em->persist($author);
+          $em->flush();
+          return $this->redirectToRoute("read");
     }
 
 
