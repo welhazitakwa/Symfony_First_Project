@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Author;
+use App\Form\AuthorType;
 use App\Repository\AuthorRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -72,6 +74,29 @@ array('id' => 3, 'picture' => '/images/Taha_Hussein.jpg','username' => 'Taha Hus
           $em->flush();
           return $this->redirectToRoute("read");
     }
+    #[Route('/Author/Add', name:"add")]
+    public function add(ManagerRegistry $doctrine , Request $request): Response{
+          $em = $doctrine->getManager();
+          $author = new Author();
+          $form= $this->createForm(AuthorType::class, $author);
+          $form ->handleRequest($request);
+            if ($form->isSubmitted()) {
+                 $em->persist($author);
+                 $em->flush();
+                 return $this->redirectToRoute("read");
+            } else {
+            return $this->renderForm("Author/create.html.twig", [
+            "form" => $form ,
+         ]);
+         
+            }
+        //   $author->setEmail("testAddStatic@gmail.com");
+        //   $author->setUsername("Add Static");
+          
+          
+    }
+
+
 
 
 }
