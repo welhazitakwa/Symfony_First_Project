@@ -16,6 +16,7 @@
       <td> {{ a.id }}</td>
       <td>{{ a.username }}</td>
       <td> {{ a.email }}</td>
+      <td><a href="{{ path('author_delete', {'id': a.id}) }}">delete</a></td>
         
       
     {% endfor %}    

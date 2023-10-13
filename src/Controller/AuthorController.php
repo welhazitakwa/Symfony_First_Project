@@ -96,7 +96,15 @@ array('id' => 3, 'picture' => '/images/Taha_Hussein.jpg','username' => 'Taha Hus
           
     }
 
+ #[Route('/Author/delete/{id}', name:"author_delete")]
+public function delete (ManagerRegistry $doctrine , $id, AuthorRepository $authorRepo) : Response {
+    $em = $doctrine->getManager();
 
+    $authorDel= $authorRepo->find($id);
+    $em->remove($authorDel);
+    $em->flush();
 
+    return $this->redirectToRoute("read");
+}
 
 }
