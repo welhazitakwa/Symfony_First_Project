@@ -30,7 +30,7 @@ array('id' => 3, 'picture' => '/images/Taha_Hussein.jpg','username' => 'Taha Hus
         ]);
     }
     #[Route('/Author/list', name : "list")]
-     public function list ():Response{
+    public function list ():Response{
        
         return $this->render('Author/list.html.twig', [
             'authors' =>$this->authors,
@@ -88,23 +88,34 @@ array('id' => 3, 'picture' => '/images/Taha_Hussein.jpg','username' => 'Taha Hus
             return $this->renderForm("Author/create.html.twig", [
             "form" => $form ,
          ]);
-         
-            }
-        //   $author->setEmail("testAddStatic@gmail.com");
-        //   $author->setUsername("Add Static");
-          
-          
+          }  
     }
 
- #[Route('/Author/delete/{id}', name:"author_delete")]
-public function delete (ManagerRegistry $doctrine , $id, AuthorRepository $authorRepo) : Response {
-    $em = $doctrine->getManager();
+    #[Route('/Author/delete/{id}', name:"author_delete")]
+    public function delete (ManagerRegistry $doctrine , $id, AuthorRepository $authorRepo) : Response {
+        $em = $doctrine->getManager();
+        $authorDel= $authorRepo->find($id);
+        $em->remove($authorDel);
+        $em->flush();
 
-    $authorDel= $authorRepo->find($id);
-    $em->remove($authorDel);
-    $em->flush();
+        return $this->redirectToRoute("read");
+    }
 
-    return $this->redirectToRoute("read");
-}
+     
+    #[Route('/Author/Edit/{id}', name: 'author_edit')]
+    public function edit(ManagerRegistry $doctrine, Request $request, $id): Response
+    {
+        $em = $doctrine->getManager();
+        $author = $em->getRepository(Author::class)->find($id);
+        $form = $this->createForm(AuthorType::class, $author);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            $em->flush(); 
+            return $this->redirectToRoute('read'); 
+        }
+        return $this->renderForm('Author/edit.html.twig', [
+            'form' => $form,
+        ]);
+    }
 
 }

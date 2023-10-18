@@ -1,9 +1,3 @@
-{# 
-{% for auth in author %}
-{{auth.id}}
-{{auth.username}}
-{{auth.email }}
- {% endfor %} #}
  <h1>List authors</h1>
 <table border="1">
 <tr>
@@ -16,7 +10,10 @@
       <td> {{ a.id }}</td>
       <td>{{ a.username }}</td>
       <td> {{ a.email }}</td>
-      <td><a href="{{ path('author_delete', {'id': a.id}) }}">delete</a></td>
+      <td>
+      <a href="{{ path('author_delete', {'id': a.id}) }}">delete</a>
+      <a href="{{ path('author_edit', {'id': a.id}) }}" > edit </a>
+      </td>
         
       
     {% endfor %}    
