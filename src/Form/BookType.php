@@ -23,6 +23,10 @@ class BookType extends AbstractType
             ->add('author', EntityType::class, [
                 'class'=> Author::class,
                 'choice_label'=> 'username',
+                'multiple'=> false,
+                'expanded'=> false,
+                'required'=> true,
+                'placeholder'=>"veuillez choisir un auteur"
             ])
             ->add('save', SubmitType::class)
         ;
