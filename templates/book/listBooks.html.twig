@@ -1,0 +1,25 @@
+ <h1>List of books</h1>
+<table border="1">
+<tr>
+    <th> id </th>
+    <th>title</th>
+    <th>date de publication</th>
+    <th>l'auteur de livre</th>
+    
+</tr>
+
+      <tr>  {% for b in book %} </tr>
+      <td> {{ b.id }}</td>
+      <td>{{ b.title }}</td>
+      <td> {{ b.publicationDate | date('y-m-d') }}</td>
+      <td> {{ b.author.username  }}</td>
+      {# <td>
+      <a href="{{ path('author_delete', {'id': a.id}) }}">delete</a>
+      <a href="{{ path('author_edit', {'id': a.id}) }}" > edit </a> 
+      </td> #}
+        
+      
+    {% endfor %}    
+</table>
+<a href= "{{path('add_book' )}}"> Add By form </a> 
+ 
