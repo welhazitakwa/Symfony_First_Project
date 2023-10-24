@@ -3,16 +3,23 @@
 <tr>
     <th> id </th>
     <th>title</th>
-    <th>date de publication</th>
-    <th>l'auteur de livre</th>
+    <th> Category </th>
+    <th> date de publication </th>
+    <th> l'auteur de livre </th>
+    <th> Actions </th>
     
 </tr>
 
       <tr>  {% for b in book %} </tr>
       <td> {{ b.id }}</td>
       <td>{{ b.title }}</td>
+      <td>{{ b.category }}</td>
       <td> {{ b.publicationDate | date('y-m-d') }}</td>
       <td> {{ b.author.username  }}</td>
+      <td>
+      <a href="">delete</a> &nbsp;
+      <a href="" > edit </a> 
+      </td>
       {# <td>
       <a href="{{ path('author_delete', {'id': a.id}) }}">delete</a>
       <a href="{{ path('author_edit', {'id': a.id}) }}" > edit </a> 

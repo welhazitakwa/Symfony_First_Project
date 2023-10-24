@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Author;
 use App\Entity\Book;
 use App\Form\BookType;
 use App\Repository\BookRepository;
@@ -40,6 +41,9 @@ class BookController extends AbstractController
           $form= $this->createForm(BookType::class, $book);
           $form ->handleRequest($request);
             if ($form->isSubmitted()) {
+                 $book->setPublished( true);
+                 $author = $book->getAuthor(); 
+                 $author->setNbBooks($author->getNbBooks() + 1);
                  $em->persist($book);
                  $em->flush();
                  return $this->redirectToRoute("listBooks");
