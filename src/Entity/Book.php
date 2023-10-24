@@ -16,6 +16,9 @@ class Book
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $category = null;
+
     #[ORM\Column]
     private ?bool $published = null;
 
@@ -35,9 +38,20 @@ class Book
         return $this->title;
     }
 
+    public function getCategory(): ?string
+    {
+        return $this->category;
+    }
+
     public function setTitle(string $title): static
     {
         $this->title = $title;
+
+        return $this;
+    }
+    public function setCategory(string $category): static
+    {
+        $this->category = $category;
 
         return $this;
     }
