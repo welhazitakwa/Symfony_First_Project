@@ -100,6 +100,21 @@ array('id' => 3, 'picture' => '/images/Taha_Hussein.jpg','username' => 'Taha Hus
 
         return $this->redirectToRoute("read");
     }
+    
+    #[Route('/Author/deletePub0', name:"supp_pub0")]
+    public function deletePub0 (ManagerRegistry $doctrine , AuthorRepository $authorRepo) : Response {
+        $em = $doctrine->getManager();
+        $author= $authorRepo->findAll();
+        for ($i = 0; $i < count($author); $i++) {
+            if ( $author[$i]->getNbBooks() == 0) {$em->remove($author[$i]);}
+        }
+        
+        //$em->remove($authorDel);
+        $em->flush();
+
+        return $this->redirectToRoute("read");
+    }
+    
 
      
     #[Route('/Author/Edit/{id}', name: 'author_edit')]

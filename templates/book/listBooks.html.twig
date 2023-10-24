@@ -1,24 +1,28 @@
  <h1>List of books</h1>
 <table border="1">
 <tr>
-    <th> id </th>
+    {# <th> id </th> #}
     <th>title</th>
-    <th> Category </th>
-    <th> date de publication </th>
-    <th> l'auteur de livre </th>
+    <th> Publication date </th>
+    <th> Published </th>
+    <th> Category </th>   
+    <th> Author </th>
     <th> Actions </th>
     
 </tr>
 
       <tr>  {% for b in book %} </tr>
-      <td> {{ b.id }}</td>
+      {# <td> {{ b.id }}</td> #}
       <td>{{ b.title }}</td>
-      <td>{{ b.category }}</td>
       <td> {{ b.publicationDate | date('y-m-d') }}</td>
+      <td>{{ b.published }}</td>
+      <td>{{ b.category }}</td>    
       <td> {{ b.author.username  }}</td>
       <td>
-      <a href="">delete</a> &nbsp;
-      <a href="" > edit </a> 
+      <a href="{{path('book_delete',{'id':b.id})}}">delete</a> &nbsp;
+    
+      {# <a href="{{path('book_edit',{'id':b.id})}}" > edit </a>  #}
+      <a href="" > show </a> 
       </td>
       {# <td>
       <a href="{{ path('author_delete', {'id': a.id}) }}">delete</a>

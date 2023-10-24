@@ -54,7 +54,15 @@ class BookController extends AbstractController
           }  
     }
 
+    #[Route('/Book/delete/{id}', name:"book_delete")]
+    public function delete (ManagerRegistry $doctrine , $id, BookRepository $bookRepo) : Response {
+        $em = $doctrine->getManager();
+        $bookDel= $bookRepo->find($id);
+        $em->remove($bookDel);
+        $em->flush();
 
+        return $this->redirectToRoute("listBooks");
+    }
 
 
 
