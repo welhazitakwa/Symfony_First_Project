@@ -18,6 +18,9 @@ class Author
     #[ORM\Column(length: 255)]
     private ?string $username = null;
 
+    #[ORM\Column]
+    private ?int $nbBooks = null;
+
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
@@ -33,10 +36,20 @@ class Author
     {
         return $this->id;
     }
+    public function getNbBooks(): ?int
+    {
+        return $this->nbBooks;
+    }
 
     public function getUsername(): ?string
     {
         return $this->username;
+    }
+      public function setNbBooks(int $nbBooks): static
+    {
+        $this->nbBooks = $nbBooks;
+
+        return $this;
     }
 
     public function setUsername(string $username): static
@@ -45,6 +58,7 @@ class Author
 
         return $this;
     }
+
 
     public function getEmail(): ?string
     {
