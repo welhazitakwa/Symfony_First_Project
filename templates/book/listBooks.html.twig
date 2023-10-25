@@ -1,3 +1,4 @@
+{% if (book) %} 
  <h1>List of books</h1>
 <table border="1">
 <tr>
@@ -36,4 +37,7 @@
 <br>
 <p style="margin-left:250px;"> Number of published books: {{published}} </p>
 <p style="margin-left:250px;"> Number of unpublished books: {{unpublished}} </p>
+{% else %}
+<h1> No Books found </h1>
+{% endif %}
 <button style="margin-left:300px;"> <a href="{{path('add_book')}}">Create new </a> </button>

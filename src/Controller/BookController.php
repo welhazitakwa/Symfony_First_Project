@@ -39,7 +39,7 @@ class BookController extends AbstractController
          }
          
          return $this->render ('Book/listBooks.html.twig', [
-            "book" => $book ,
+            "book" => '' ,
             "published" => $published,
             "unpublished" => $unpublished
          ] ) ;  
