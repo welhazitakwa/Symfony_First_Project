@@ -23,8 +23,7 @@
       
       <a href="{{path('book_edit',{'id':b.id})}}" > edit </a>  &nbsp;
       <a href="{{path('book_delete',{'id':b.id})}}">delete</a> &nbsp;
-    
-      <a href="" > show </a> 
+      <a href= "{{path('showDetails', {'id': b.id} )}}"> show </a> 
       </td>
       {# <td>
       <a href="{{ path('author_delete', {'id': a.id}) }}">delete</a>

@@ -25,7 +25,7 @@ class BookController extends AbstractController
 
 
        #[Route('/Book/list', name:"listBooks" )]
-    public function read (BookRepository $bookRepo):Response {
+        public function read (BookRepository $bookRepo):Response {
          $book = $bookRepo->findBy(['published' => true]);
          $published =0;
          $unpublished =0;
@@ -39,7 +39,7 @@ class BookController extends AbstractController
          }
          
          return $this->render ('Book/listBooks.html.twig', [
-            "book" => '' ,
+            "book" => $book ,
             "published" => $published,
             "unpublished" => $unpublished
          ] ) ;  
@@ -47,7 +47,7 @@ class BookController extends AbstractController
 
 
 
-        #[Route('/Book/Add', name:"add_book")]
+    #[Route('/Book/Add', name:"add_book")]
          public function add(ManagerRegistry $doctrine , Request $request): Response{
           $em = $doctrine->getManager();
           $book = new Book();
@@ -93,6 +93,14 @@ class BookController extends AbstractController
         ]);
     }
 
-
+   #[Route('/Book/show/details/{id}', name : "showDetails")]
+     public function auhtorDetails ($id, BookRepository $bookRepo):Response{
+       $book = $bookRepo->findBy(['published' => true]);
+        return $this->render('Book/detailsBook.html.twig', [
+            'id' => $id,
+            'book' => $book,
+        ]);
+        
+    }
 
 }

@@ -1,0 +1,13 @@
+ {% for b in book  %}
+ {% if ( b.id == id ) %} 
+<center> 
+<h4> Book </h4>
+<p>l'id de l'auteur passé : {{b.author.id}}</p>
+        <p > Title of Book : {{b.title}}</p>
+        <p > Publication Date : {{ b.publicationDate | date('y-m-d') }}</p>
+        <p > Author : {{ b.author.username }}</p>
+</center> 
+
+{% endif %}
+ {% endfor %}
+
