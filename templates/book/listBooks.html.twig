@@ -18,10 +18,11 @@
       <td>{{ b.published }}</td>
       <td>{{ b.category }}</td>    
       <td> {{ b.author.username  }}</td>
-      <td>
+      <td>  
+      
+      <a href="{{path('book_edit',{'id':b.id})}}" > edit </a>  &nbsp;
       <a href="{{path('book_delete',{'id':b.id})}}">delete</a> &nbsp;
     
-      {# <a href="{{path('book_edit',{'id':b.id})}}" > edit </a>  #}
       <a href="" > show </a> 
       </td>
       {# <td>
@@ -32,5 +33,7 @@
       
     {% endfor %}    
 </table>
-<a href= "{{path('add_book' )}}"> Add By form </a> 
- 
+<br>
+<p style="margin-left:250px;"> Number of published books: {{published}} </p>
+<p style="margin-left:250px;"> Number of unpublished books: {{unpublished}} </p>
+<button style="margin-left:300px;"> <a href="{{path('add_book')}}">Create new </a> </button>
