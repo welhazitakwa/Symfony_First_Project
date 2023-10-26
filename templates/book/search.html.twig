@@ -1,0 +1,38 @@
+{{ form_start(form) }}
+<br>
+{{ form_label(form.title , " title ")}}
+<br>
+{{ form_widget(form.title)}}
+<br>
+{{  form_widget(form.search) }}
+{{ form_end(form)}}
+
+
+<table border="1">
+<tr>
+    {# <th> id </th> #}
+    <th>title</th>
+    <th> Publication date </th>
+    <th> Published </th>
+    <th> Category </th>   
+    <th> Author </th>
+    <th> Actions </th>
+    
+</tr>
+
+      <tr>  {% for b in books %} </tr>
+      {# <td> {{ b.id }}</td> #}
+      <td>{{ b.title }}</td>
+      <td> {{ b.publicationDate | date('y-m-d') }}</td>
+      <td>{{ b.published }}</td>
+      <td>{{ b.category }}</td>    
+      <td> {{ b.author.username  }}</td> 
+      {% else %}
+        <tr>
+        <td> No record found </td> 
+        </tr>
+            
+    {% endfor %}    
+</table>
+
+

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Author;
 use App\Entity\Book;
 use App\Form\BookType;
+use App\Form\SearchType;
 use App\Repository\BookRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -101,6 +102,28 @@ class BookController extends AbstractController
             'book' => $book,
         ]);
         
+    }
+
+    #[Route('/Book/search', name : "searchBook")]
+    public function searchBook (BookRepository $bookRepo ,Request $request  ): Response{
+        $book = new Book();
+        $form = $this->createForm(SearchType::class, $book);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()){
+            // $title= $form->get('title')->getData();
+            $title = $book->getTitle();
+            $books = $bookRepo->search($title);
+            return $this->render('book/search.html.twig',[
+                'books' => $books,
+                'form' => $form->createView(),
+            ]) ;
+        } else {
+                // return $this-> redirectToRoute('listBooks');
+                return $this->render('book/search.html.twig',[
+                'form' => $form->createView(),
+                'books'=> $bookRepo->findAll(),
+            ]) ;
+            }
     }
 
 }
