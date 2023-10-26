@@ -18,10 +18,10 @@ class Vol
     private ?string $villeDestination = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $dateDeDépart = null;
+    private ?\DateTimeInterface $dateDeDepart = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $dateDArrivée = null;
+    private ?\DateTimeInterface $dateDArrivee = null;
 
     #[ORM\ManyToOne(inversedBy: 'vols')]
     private ?Aeroport $Aeroport = null;
@@ -43,26 +43,26 @@ class Vol
         return $this;
     }
 
-    public function getDateDeDépart(): ?\DateTimeInterface
+    public function getDateDeDepart(): ?\DateTimeInterface
     {
-        return $this->dateDeDépart;
+        return $this->dateDeDepart;
     }
 
-    public function setDateDeDépart(\DateTimeInterface $dateDeDépart): static
+    public function setDateDeDepart(\DateTimeInterface $dateDeDepart): static
     {
-        $this->dateDeDépart = $dateDeDépart;
+        $this->dateDeDepart = $dateDeDepart;
 
         return $this;
     }
 
-    public function getDateDArrivée(): ?\DateTimeInterface
+    public function getDateDArrivee(): ?\DateTimeInterface
     {
-        return $this->dateDArrivée;
+        return $this->dateDArrivee;
     }
 
-    public function setDateDArrivée(\DateTimeInterface $dateDArrivée): static
+    public function setDateDArrivee(\DateTimeInterface $dateDArrivee): static
     {
-        $this->dateDArrivée = $dateDArrivée;
+        $this->dateDArrivee = $dateDArrivee;
 
         return $this;
     }

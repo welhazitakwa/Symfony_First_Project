@@ -11,8 +11,8 @@
       <tr>  {% for v in vols %} </tr>
       <td> {{ v.id }}</td>
       <td>{{ v.villeDestination  }}</td>
-      <td>{{ v.dateDeDépart  | date('y-m-d')}}</td>
-      <td>{{ v.dateDArrivée  | date('y-m-d') }}</td>
+      <td>{{ v.dateDeDepart  | date('y-m-d')}}</td>
+      <td>{{ v.dateDArrivee  | date('y-m-d') }}</td>
       
       <td>
       {# <a href="{{ path('author_delete', {'id': a.id}) }}">delete</a> #}

@@ -20,7 +20,7 @@ class VolType extends AbstractType
             ->add('dateDArrivee', DateType::class)
             ->add('Aeroport',EntityType::class, [
                 'class'=> Vol::class,
-                
+                'choice_label' => 'nom', 
             ])
             ->add('save', SubmitType::class)
 
