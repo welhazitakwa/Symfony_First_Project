@@ -1,0 +1,24 @@
+<center> <h1>Liste des Vols</h1> </center>
+<table border="1">
+<tr>
+    <th> id </th>
+    <th>ville De destination</th>
+    <th>date De Départ</th>
+    <th>date De Arrivée:</th>
+    <th>Actions</th>
+</tr>
+
+      <tr>  {% for v in vols %} </tr>
+      <td> {{ v.id }}</td>
+      <td>{{ v.villeDestination  }}</td>
+      <td>{{ v.dateDeDépart  | date('y-m-d')}}</td>
+      <td>{{ v.dateDArrivée  | date('y-m-d') }}</td>
+      
+      <td>
+      {# <a href="{{ path('author_delete', {'id': a.id}) }}">delete</a> #}
+      {# <a href="{{ path('author_edit', {'id': a.id}) }}" > edit </a> #}
+      </td>
+        
+      
+    {% endfor %}    
+</table>
