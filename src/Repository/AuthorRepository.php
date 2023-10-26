@@ -54,4 +54,14 @@ public function triQB() {
         return $req ;
 
 }
+
+public function triDQL(){
+    $em = $this->getEntityManager();
+    $req = $em ->createQuery('select a from App\Entity\Author a order by a.username DESC');
+    return $req->getResult();
+}
+
+
+
+
 }

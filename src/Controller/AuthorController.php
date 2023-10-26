@@ -138,5 +138,12 @@ array('id' => 3, 'picture' => '/images/Taha_Hussein.jpg','username' => 'Taha Hus
             "author" => $author ,
          ] ) ;  
     }
+    #[Route('/Author/TriDQL', name: 'author_tridql')]
+    public function getTriDQL(AuthorRepository $authorRepo):Response {
+         $author = $authorRepo->triDQL();
+         return $this->render ('Author/read.html.twig', [
+            "author" => $author ,
+         ] ) ;  
+    }
 
 }
