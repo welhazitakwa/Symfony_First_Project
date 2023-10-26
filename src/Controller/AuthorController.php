@@ -115,8 +115,6 @@ array('id' => 3, 'picture' => '/images/Taha_Hussein.jpg','username' => 'Taha Hus
         return $this->redirectToRoute("read");
     }
     
-
-     
     #[Route('/Author/Edit/{id}', name: 'author_edit')]
     public function edit(ManagerRegistry $doctrine, Request $request, $id): Response
     {
@@ -131,6 +129,14 @@ array('id' => 3, 'picture' => '/images/Taha_Hussein.jpg','username' => 'Taha Hus
         return $this->renderForm('Author/edit.html.twig', [
             'form' => $form,
         ]);
+    }
+
+    #[Route('/Author/Tri', name: 'author_tri')]
+    public function getTri(AuthorRepository $authorRepo):Response {
+         $author = $authorRepo->triQB();
+         return $this->render ('Author/read.html.twig', [
+            "author" => $author ,
+         ] ) ;  
     }
 
 }
