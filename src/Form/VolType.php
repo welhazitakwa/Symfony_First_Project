@@ -17,8 +17,11 @@ class VolType extends AbstractType
         $builder
             ->add('villeDestination')
             ->add('dateDeDepart', DateType::class)
-            ->add('dateDArrivée', DateType::class)
-            ->add('Aeroport',EntityType::class)
+            ->add('dateDArrivee', DateType::class)
+            ->add('Aeroport',EntityType::class, [
+                'class'=> Vol::class,
+                
+            ])
             ->add('save', SubmitType::class)
 
         ;
