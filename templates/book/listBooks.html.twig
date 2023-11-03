@@ -36,6 +36,8 @@
 <br>
 <p style="margin-left:250px;"> Number of published books: {{published}} </p>
 <p style="margin-left:250px;"> Number of unpublished books: {{unpublished}} </p>
+<p style="margin-left:250px;"> Nombre de livres dans la categorie Romance: 
+{{ nbLivRomance | length}} </p>
 <a style="margin-left:250px;" href="{{path('getByCatRomance')}}" > click to get books in Romance Category </a> <br>
 {% else %}
 <h1> No Books found </h1>

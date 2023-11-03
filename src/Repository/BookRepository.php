@@ -62,7 +62,18 @@ public function getByCategory (){
     $category = 'Romance';
     $req= $em->createQuery('select b from App\Entity\Book b where b.category = :category')
                 ->setParameter("category", $category);
+     $nbLivRomance= $req->getSingleScalarResult();
 
     return $req->getResult();
+}
+public function getnbrLivRomance (){
+
+    $em = $this->getEntityManager();
+    $category = 'Romance';
+    $req= $em->createQuery('select b from App\Entity\Book b where b.category = :category')
+             ->setParameter("category", $category);
+    $nbLivRomance= $req->getScalarResult();
+
+    return $nbLivRomance;
 }
 }

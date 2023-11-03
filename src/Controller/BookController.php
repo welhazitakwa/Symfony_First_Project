@@ -28,6 +28,7 @@ class BookController extends AbstractController
        #[Route('/Book/list', name:"listBooks" )]
         public function read (BookRepository $bookRepo):Response {
          $book = $bookRepo->findBy(['published' => true]);
+         $nbLivRomance = $bookRepo->getnbrLivRomance();
          $published =0;
          $unpublished =0;
          for ($i=0; $i<count($book); $i++) {
@@ -42,7 +43,8 @@ class BookController extends AbstractController
          return $this->render ('Book/listBooks.html.twig', [
             "book" => $book ,
             "published" => $published,
-            "unpublished" => $unpublished
+            "unpublished" => $unpublished,
+            "nbLivRomance"=>$nbLivRomance,
          ] ) ;  
     }
 
