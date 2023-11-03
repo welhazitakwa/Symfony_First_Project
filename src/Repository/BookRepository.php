@@ -76,4 +76,13 @@ public function getnbrLivRomance (){
 
     return $nbLivRomance;
 }
+public function getByDateR (){
+    $em = $this->getEntityManager();
+    $startDate = '2014-01-01';
+    $endDate = '2018-12-31';
+    $req = $em->createQuery('select b from App\Entity\Book b where b.publicationDate between :startDate and :endDate')
+    ->setParameter("startDate",$startDate)
+    ->setParameter("endDate",$endDate);
+    return $req->getResult();
+}
 }

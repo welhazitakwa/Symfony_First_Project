@@ -1,5 +1,5 @@
 {% if (book) %} 
- <h1>List of books</h1>
+ <h1>List of books Between « 2014-01-01 » et «2018- 12-31 »</h1>
 <table border="1">
 <tr>
     {# <th> id </th> #}
@@ -25,18 +25,12 @@
       <a href="{{path('book_delete',{'id':b.id})}}">delete</a> &nbsp;
       <a href= "{{path('showDetails', {'id': b.id} )}}"> show </a> 
       </td>
-      
     {% endfor %}    
 </table>
 <br>
-<p style="margin-left:250px;"> Number of published books: {{published}} </p>
-<p style="margin-left:250px;"> Number of unpublished books: {{unpublished}} </p>
-<p style="margin-left:250px;"> Nombre de livres dans la categorie Romance: 
-{{ nbLivRomance | length}} </p>
-<a style="margin-left:250px;" href="{{path('getByCatRomance')}}" > click to get books in Romance Category </a> <br>
-<a style="margin-left:250px;" href="{{path('getByDate')}}" > click to get books between « 2014-01-01 » et «2018- 12-31 »</a> <br>
+
+<a href="{{path('listBooks')}}" > Back to original List </a>
 {% else %}
 <h1> No Books found </h1>
 {% endif %}
-<br>
 <button style="margin-left:300px;"> <a href="{{path('add_book')}}">Create new </a> </button>

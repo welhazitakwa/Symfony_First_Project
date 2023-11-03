@@ -135,5 +135,12 @@ class BookController extends AbstractController
             "book"=>$book,
         ]);
     }
+    #[Route('/Book/getByDate', name:'getByDate')]
+    public function getByDate(BookRepository $bookRepo):Response {
+        $book = $bookRepo->getByDateR();
+        return $this->render('Book/getByDate.html.twig',[
+            "book"=>$book,
+        ]);
+    }
 
 }
