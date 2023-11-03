@@ -126,4 +126,12 @@ class BookController extends AbstractController
             }
     }
 
+    #[Route('/Book/getByCatRomance', name:'getByCatRomance')]
+    public function getByCategory(BookRepository $bookRepo):Response {
+        $book = $bookRepo->getByCategory();
+        return $this->render('Book/listByRomance.html.twig',[
+            "book"=>$book,
+        ]);
+    }
+
 }

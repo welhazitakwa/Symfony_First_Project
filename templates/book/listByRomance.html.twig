@@ -34,11 +34,9 @@
     {% endfor %}    
 </table>
 <br>
-<p style="margin-left:250px;"> Number of published books: {{published}} </p>
-<p style="margin-left:250px;"> Number of unpublished books: {{unpublished}} </p>
-<a style="margin-left:250px;" href="{{path('getByCatRomance')}}" > click to get books in Romance Category </a> <br>
+
+<a href="{{path('listBooks')}}" > Back to original List </a>
 {% else %}
 <h1> No Books found </h1>
 {% endif %}
-<br>
 <button style="margin-left:300px;"> <a href="{{path('add_book')}}">Create new </a> </button>

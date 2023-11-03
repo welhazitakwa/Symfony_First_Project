@@ -55,4 +55,14 @@ public function search ($title){
                 ->getResult();
         return $req ;
 }
+
+public function getByCategory (){
+
+    $em = $this->getEntityManager();
+    $category = 'Romance';
+    $req= $em->createQuery('select b from App\Entity\Book b where b.category = :category')
+                ->setParameter("category", $category);
+
+    return $req->getResult();
+}
 }
